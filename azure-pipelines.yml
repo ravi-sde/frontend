@@ -2,7 +2,7 @@ trigger:
 - master
 
 variables:
-    uiSource: '/frontend'
+    uiSource: 'frontend'
     uiBuild: '$(uiSource)/build'
 
 pool:
