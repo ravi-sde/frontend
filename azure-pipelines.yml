@@ -1,0 +1,23 @@
+trigger:
+- master
+
+variables:
+    uiSource: '/frontend'
+    uiBuild: '$(uiSource)/build'
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '20.x'
+  displayName: 'Install Node.js'
+
+- script: |
+    cd $(uiSource)
+    npm install
+    npm run build
+    ls -la $(uiBuild)  # List contents of the build directory
+  displayName: 'npm install and build'
+
